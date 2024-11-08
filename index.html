@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ecuaciones Lineales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        header h1 {
+            margin: 0;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007bff;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .form-container input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Calculadora de Ecuaciones Lineales</h1>
+        <p>Resuelve ecuaciones lineales de la forma: ax + b = 0</p>
+    </header>
+
+    <main>
+        <h2>Ingrese los valores de "a" y "b"</h2>
+
+        <div class="form-container">
+            <label for="aValue">Valor de "a" (coeficiente de x):</label>
+            <input type="number" id="aValue" placeholder="Por ejemplo: 2" required>
+        </div>
+
+        <div class="form-container">
+            <label for="bValue">Valor de "b" (término independiente):</label>
+            <input type="number" id="bValue" placeholder="Por ejemplo: -6" required>
+        </div>
+
+        <button onclick="calcularEcuacion()">Resolver Ecuación</button>
+
+        <div id="result" class="result" style="display: none;">
+            <h3>Resultado:</h3>
+            <p id="resultadoX"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Calculadora de Ecuaciones Lineales | Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function calcularEcuacion() {
+            // Obtener los valores de los inputs
+            var a = parseFloat(document.getElementById('aValue').value);
+            var b = parseFloat(document.getElementById('bValue').value);
+
+            // Validación básica para evitar errores
+            if (isNaN(a) || isNaN(b)) {
+                alert("Por favor, ingresa valores numéricos válidos para 'a' y 'b'.");
+                return;
+            }
+
+            if (a === 0) {
+                alert("El valor de 'a' no puede ser 0, ya que no sería una ecuación lineal.");
+                return;
+            }
+
+            // Resolver la ecuación ax + b = 0
+            var x = -b / a;
+
+            // Mostrar el resultado
+            var resultadoDiv = document.getElementById('result');
+            var resultadoX = document.getElementById('resultadoX');
+            resultadoDiv.style.display = 'block';
+            resultadoX.textContent = "La solución de la ecuación es: x = " + x;
+        }
+    </script>
+
+</body>
+</html>
